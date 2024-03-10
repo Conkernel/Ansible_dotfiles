@@ -20,7 +20,13 @@
 #      tags: ["grub"]
     - role: groups
 #      tags: [""]
+    - role: users
+#      tags: [""]
+    - role: sudo
+#      tags: [""]
+
+
 #    - role: zsh # Instala y configura zsh
 #      tags: ["zsh"]
-    - role: users
+
 ...
