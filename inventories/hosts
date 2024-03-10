@@ -4,7 +4,7 @@ localhost
 [local:vars]
 ansible_connection=local
 ansible_user=oloco
-ansible_password=oloco
+ansible_password=passwd
 become_user=root
 become_method=sudo
 become=true
