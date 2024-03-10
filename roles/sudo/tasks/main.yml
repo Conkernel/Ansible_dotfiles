@@ -1,0 +1,10 @@
+---
+
+    - name: "Habilitar grupo {{ groups_sudo_group }} en sudo"
+      ansible.builtin.copy:
+        content: >
+          %{{ groups_sudo_group }} ALL=(ALL) NOPASSWD:ALL
+        dest: /etc/sudoers.d/{{ groups_sudo_group }}
+        mode: "0600"
+
+...
