@@ -18,6 +18,8 @@
 #    - role: packages # Instala la paquetería
 #    - role: "grub" # Actualiza el valor de GRUB_TIMEOUT en /etc/default/grub.
 #      tags: ["grub"]
+    - role: groups
+#      tags: [""]
 #    - role: zsh # Instala y configura zsh
 #      tags: ["zsh"]
     - role: users
