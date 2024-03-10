@@ -13,6 +13,9 @@
     shell: /bin/zsh
 
 
+
+
+# Revisar si realmente hace falta
 - name: Crear el usuario ansible
   ansible.builtin.user:
     state: present
