@@ -2,7 +2,7 @@
 # tasks file for users
 
 
-- name: "Crear un usuario y meterlo al grupo {{ groups_sudo_group }}"
+- name: "Crear usuario {{ users_user_name }} y meterlo al grupo {{ groups_sudo_group }}"
   ansible.builtin.user:
     state: present
     name: "{{ users_user_name }}"
@@ -16,7 +16,7 @@
 - name: Crear el usuario ansible
   ansible.builtin.user:
     state: present
-    name: ansible   
+    name: ansible
     create_home: true
     comment: ansible
     shell: /bin/zsh
