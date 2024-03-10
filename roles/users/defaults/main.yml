@@ -2,7 +2,7 @@
 # defaults file for users
 
 # Nombre del usuario a crear en el sistema
-#users_user_name: oloco2
+#users_user_name: oloco
 
 # Mete al usuario al grupo de sudoers adecuado en función de la distribución detectada
 users_sudo_group: "{{ 
