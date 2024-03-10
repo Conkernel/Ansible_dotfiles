@@ -1,0 +1,38 @@
+---
+
+- name: "Cambiar el valor de GRUB_CMDLINE_LINUX_DEFAULT a {{ GRUB_CMDLINE_LINUX_DEFAULT }}"
+  ansible.builtin.lineinfile:
+    path: "{{ GRUB_ETC_CFG_FILE }}"
+    line: "GRUB_CMDLINE_LINUX_DEFAULT={{ GRUB_CMDLINE_LINUX_DEFAULT }}"
+    regexp: "^GRUB_CMDLINE_LINUX_DEFAULT="
+    backup: yes
+    state: present
+#  notify: "Actualizar config de grub"
+  tags: grub
+  register: RESULTADO_GRUB_CMDLINE_LINUX_DEFAULT
+
+
+
+- name: Cambiar el valor de GRUB_TIMEOUT a {{ GRUB_TIMEOUT }}
+  ansible.builtin.lineinfile:
+    path: "{{ GRUB_ETC_CFG_FILE }}"
+    line: "GRUB_TIMEOUT={{ GRUB_TIMEOUT }}"
+    regexp: "^GRUB_TIMEOUT="
+    backup: yes
+    state: present
+#  notify: "Actualizar config de grub"
+  tags: grub
+  register: RESULTADO_GRUB_TIMEOUT
+
+
+# Sólo se ejecuta en caso de que RESULTADO_GRUB_CMDLINE_LINUX_DEFAULT o RESULTADO_GRUB_TIMEOUT hayan cambiado
+- name: Actualizar config de grub
+  ansible.builtin.command: grub-mkconfig -o {{ GRUB_BOOT_CFG_FILE }}
+  register: GRUB_MKCONFIG_OUTPUT # <- Registers the command output.
+  when: RESULTADO_GRUB_CMDLINE_LINUX_DEFAULT.changed or RESULTADO_GRUB_TIMEOUT.changed
+  changed_when: GRUB_MKCONFIG_OUTPUT.changed != 0 # <- Uses the return code to define when the task has changed.
+  tags:
+    - grub
+
+
+...

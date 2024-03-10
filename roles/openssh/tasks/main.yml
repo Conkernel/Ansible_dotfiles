@@ -1,0 +1,12 @@
+---
+
+- name: Añade la clave ssh para oloco
+  ansible.posix.authorized_key:
+    user: oloco
+    state: present
+    key: "{{ lookup('file', '/home/charlie/.ssh/id_rsa.pub') }}"
+    manage_dir: false
+    validate_certs: false
+#    key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
+
+...

@@ -1,0 +1,24 @@
+---
+
+- name: Tareas de despliegue automático en arch linux
+  hosts: archible.casa.lan
+  vars_prompt:
+    - name: users_user_name
+      prompt: ¿Nombre de usuario para crear?
+      private: false
+      default: oloco
+
+  vars:
+    PYTHONDONTWRITEBYTECODE: True 
+  become: true
+  roles:
+#    - role: "pre_tasks"
+#    - role: sysupgrade # Actualiza paquetes y luego sistema
+#      tags: ["update_packages", "upgrade_system"]
+#    - role: packages # Instala la paquetería
+#    - role: "grub" # Actualiza el valor de GRUB_TIMEOUT en /etc/default/grub.
+#      tags: ["grub"]
+#    - role: zsh # Instala y configura zsh
+#      tags: ["zsh"]
+    - role: users
+...

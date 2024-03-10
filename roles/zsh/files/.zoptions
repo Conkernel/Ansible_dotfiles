@@ -1,0 +1,241 @@
+### OPCIONES ###
+setopt ALIASES # Expande automáticamente las palabras definidas como alias.
+
+setopt ALIASFUNCDEF # Permite crear alias asociados a funciones definidas por ti. Ejemplo: Puedes crear un alias limpiar que ejecute la función limpiar_terminal, definida por ti para borrar la pantalla.
+
+#setopt ALLEXPORT  # exportar todas las variables al entorno.Usar con cuidado ya que exporta TODO a otras aplicaciones
+
+#setopt ALWAYSLASTPROMPT # Muestra el prompt al final de la línea actual, aunque la línea no esté vacía. Ejemplo: Útil para visualizar el prompt aunque ya estés escribiendo un comando largo.
+
+setopt ALWAYSTOEND #  Mueve el cursor al final de la línea después de una comletion. Ejemplo: Evita la necesidad de mover el cursor manualmente luego de cada tabulación.
+
+setopt APPENDCREATE #  Al usar >>, si el archivo no existe, lo crea antes de añadir contenido. Ejemplo: echo "Hola" >> nuevo_archivo creará el archivo nuevo_archivo si no existe y añadirá "Hola" al final. "NO_CLOBBER" debe estar activado para que funcione.
+
+setopt APPENDHISTORY # Las sesiones zsh agregarán su lista de historial a el archivo de historial, en lugar de reemplazarlo. Por lo tanto, múltiples paralelos Todas las sesiones de ZSH tendrán las nuevas entradas de sus listas de historial agregados al archivo de historial, en el orden en que salen. El archivo se reescribirá periódicamente para recortarlo cuando el archivo El número de líneas crece un 20% más allá del valor especificado por $SAVEHIST
+
+
+#setopt AUTOCD # Cambia automáticamente al directorio del archivo o comando ejecutado (si es válido).
+
+#setopt AUTOLIST # Si comienzas a escribir ls, la opción te sugerirá todos los archivos y directorios del directorio actual.
+
+#setopt AUTOMENU # Sugiere opciones válidas para un comando según lo que escribes. Ejemplo: Al escribir tar cf -, la opción te sugerirá posibles archivos para comprimir con tar. Esta opción no funciona si MENU_COMPLETE está habilitado
+
+#setopt AUTONAMEDIRS # Por ejemplo si navegas a /home/user/documents, zsh puede asignar automáticamente un nombre a este directorio, por ejemplo, ~user-documents, haciendo que el prompt refleje tu ubicación de una manera más legible.
+
+# setopt AUTOPARAMKEYS # Si, después de que se haya completado un nombre de parámetro y se haya insertado un carácter automático (como un espacio), el siguiente carácter que escribes es uno que normalmente debería ir directamente después del nombre del parámetro (por ejemplo, '}', ':', etc.), entonces AUTO_PARAM_KEYS elimina automáticamente el carácter agregado para que el carácter que escribas se coloque inmediatamente después del nombre del parámetro.
+
+#setopt AUTOPARAMSLASH # Completa automáticamente rutas o nombres de archivo con / cuando escribes el último directorio.
+
+#setopt AUTOPUSHD # Cuando cambias de directorio, agrega el anterior a la pila de directorios (pushd). Puedes volver al directorio anterior con popd, y navegar la pila con dirs.
+
+#setopt AUTOREMOVESLASH # Elimina automáticamente la diagonal final de comandos que no requieren directorio.
+
+#setopt AUTORESUME # Supongamos que tienes un trabajo suspendido en segundo plano, por ejemplo, sleep 100 &, y luego escribes simplemente sleep. Si AUTO_RESUME está habilitado, zsh entenderá que quieres reanudar el trabajo sleep 100 en lugar de ejecutar un nuevo sleep.
+
+setopt NOBEEP # La shell no produce sonido de error op aviso
+
+setopt BGNICE # Puedes usar BG_NICE para que los trabajos en segundo plano no consuman tantos recursos del sistema. Activado por defecto
+
+#setopt BRACE_EXPAND # "echo file{1,2,3}.txt" da como resultado "file1.txt file2.txt file3.txt"
+
+#setopt BADPATTERN # Ignora los patrones de expansión de palabras no válidos. Ejemplo: Si activas BADPATTERN, el comando ls *? no mostrará un mensaje de error si no hay archivos que coincidan con el patrón.
+
+setopt BANGHIST # Permite utilizar ! o !! para ejecutar el último comando lanzado
+
+#setopt BAREGLOBQUAL # La presencia de paréntesis al final indica que se trata de una lista de calificadores y no de una subexpresión para coincidir con paréntesis específicos en los nombres de los archivos.
+
+#setopt BASHAUTOLIST #  Completa automáticamente los nombres de archivos y directorios al estilo de Bash.
+
+#setopt BASHREMATCH # Por ejemplo, si usas grep -E "(a|b)c" fichero.txt, la expresión regular captura dos grupos: (a|b) y c. Las coincidencias de estos grupos se almacenarán en las variables especiales $BASH_REMATCH[1] y $BASH_REMATCH[2].
+
+#setopt BRACECCL #Permite usar la clase de caracteres POSIX [:ccl:] dentro de las llaves {}. Ejemplo: Si activas BRACECCL, el comando ls {a-z} listará todos los archivos que comienzan con una letra minúscula.
+
+#setopt BRACEEXPAND # Expande las llaves {} en una lista de argumentos. Ejemplo: Si activas BRACEEXPAND, el comando ls {a,b,c} listará los archivos a, b y c.
+
+#setopt BSDECHO # Deshabilita secuencias de escape con barra invertida en las cadenas de echo, a menos que se especifique la opción -e. 
+
+#setopt CASEGLOB #Controla si las expansiones de patrones (globbing) son sensibles a mayúsculas y minúsculas.
+
+#setopt CASEMATCH #Controla si las comparaciones de cadenas son sensibles a mayúsculas y minúsculas.
+
+#setopt CASEPATHS # Hace que las coincidencias de nombres de archivos en rutas sean sensibles a mayúsculas y minúsculas.
+
+#setopt CBASES # Indica a zsh que debe mostrar números hexadecimales en el formato estándar de C.
+
+#setopt CDABLEVARS #  Cuando el argumento de un comando cd (o un cd implícito con la opción AUTO_CD activada) no es un directorio y no comienza con una barra inclinada, zsh intentará expandir la expresión como si estuviera precedida por un carácter tilde (~). Esto implica que zsh intentará tratar la expresión como un nombre de usuario, como en la expansión de tilde.
+
+#setopt CDSILENT #  evita que cd imprima el directorio actual después de realizar un cambio de directorio, ya sea un cambio explícito mediante cd o un cambio implícito cuando la opción AUTO_CD está activada.
+
+#setopt CHASEDOTS # Por defecto, zsh elimina el segmento ".." al cambiar de directorio. Por ejemplo, cd /foo/bar/.. cambiará al directorio /foo. 
+#Comportamiento con CHASE_DOTS:
+#Cuando CHASE_DOTS está activado, zsh resuelve el camino físico correspondiente al directorio que ".." representa. Por ejemplo, si /foo/bar es un enlace simbólico a /alt/rod, con CHASE_DOTS, cd /foo/bar/.. cambiará a /alt.
+
+#setopt CHASELINKS # CHASE_LINKS resuelve los enlaces simbólicos a sus valores reales al cambiar de directorio. Además, esta opción tiene el mismo efecto que CHASE_DOTS, lo que significa que el segmento de ruta ".." (cd .. o cd nombre/..) se tratará como referente al directorio físico padre, incluso si el segmento de ruta precedente es un enlace simbólico.
+
+setopt CHECKJOBS # La opción CHECK_JOBS en zsh controla si se informa sobre el estado de los trabajos en segundo plano y suspendidos antes de salir de una shell con control de trabajos. 
+
+setopt CHECKRUNNINGJOBS # se utiliza en conjunto con CHECK_JOBS para especificar si se deben verificar tanto los trabajos en ejecución como los trabajos suspendidos antes de salir de la shell.
+
+setopt CLOBBER # permite la redirección con el operador > para truncar archivos existentes. Sin esta opción, se debe usar >! o >| para truncar un archivo.
+
+setopt CLOBBEREMPTY # Lo mismo que CLOBBER, pero con ficheros vacíos
+
+# setopt COMBININGCHARS # Asume que la terminal muestra correctamente los caracteres combinados. Específicamente, si un carácter alfanumérico base es seguido por uno o más caracteres de puntuación de ancho cero (zero-width punctuation characters), se asume que los caracteres de ancho cero se mostrarán como modificaciones al carácter base en el mismo ancho. No todas las terminales manejan esto correctamente. Si esta opción no está activada, los caracteres de ancho cero se muestran por separado con marcas especiales.
+
+setopt COMPLETEALIASES # Evita que los alias en la línea de comandos sean sustituidos internamente antes de que se intente la completación. El efecto es hacer que el alias sea un comando distinto a efectos de completación.
+
+# setopt COMPLETEINWORD # Si COMPLETE_IN_WORD está desactivado (unset), cuando se inicia la completación, el cursor se coloca al final de la palabra. Si está activado, el cursor permanece en su posición actual, y la completación se realiza desde ambos extremos de la palabra.
+
+# setopt CONTINUEONERROR # Cuando CONTINUE_ON_ERROR está activado y se encuentra un error fatal en la ejecución de un script (ver Sección 6.6 [Errors], página 15), la shell continuará la ejecución en la siguiente declaración en el script, en el nivel superior, es decir, fuera de todas las funciones o construcciones de la shell como bucles y condiciones. Esto imita el comportamiento de las shells interactivas, donde la shell vuelve al editor de línea para leer un nuevo comando.
+
+setopt CORRECT # Cuando CORRECT está habilitado, la shell zsh intenta corregir automáticamente errores tipográficos en los comandos que escribes. Si detecta una posible corrección, la ofrece y te da la opción de aceptarla antes de ejecutar el comando.
+
+#setopt CORRECTALL # La opción CORRECT_ALL en zsh amplía la corrección automática de errores tipográficos no solo al comando principal, sino a todos los argumentos en una línea de comandos. 
+
+#setopt CPRECEDENCES # Cuando C_PRECEDENCES está habilitado, la precedencia de los operadores aritméticos se ajusta para que sea más coherente con la precedencia utilizada en el lenguaje de programación C y otros lenguajes similares.
+
+#setopt CSHJUNKIEHISTORY # Pendiente de entender y revisar
+
+#setopt CSHJUNKIELOOPS # La opción CSH_JUNKIE_LOOPS en zsh te permite escribir bucles for y while con una sintaxis más simple, similar a la del shell CSH. En lugar de la estructura tradicional "do ... done", puedes usar simplemente "list; end".
+
+#setopt CSHJUNKIEQUOTES # La opción CSH_JUNKIE_QUOTES en zsh cambia el comportamiento de las comillas simples y dobles para que coincida con el del shell CSH. 
+
+#setopt CSHNULLCMD # En zsh, puedes utilizar operadores de redirección (>, <, >>, etc.) sin especificar un comando delante. En ese caso, zsh normalmente utiliza el valor de la opción NULLCMD para generar un comando ficticio que se ejecuta.
+
+#setopt CSHNULLGLOB # Cuando CSH_NULL_GLOB está habilitado, si un patrón utilizado para la generación de nombres de archivo no tiene coincidencias, se elimina el propio patrón de la lista de argumentos en lugar de generar un error. Esto se aplica a cada patrón individual en un comando, y solo se informará de un error si todos los patrones en un comando no tienen coincidencias.
+#setopt DEBUGBEFORECMD # Comportamiento predeterminado (sin DEBUG_BEFORE_CMD):
+#El "trap DEBUG" se ejecuta después de cada comando.
+#Esto es similar al comportamiento de ksh 88.
+#Comportamiento con DEBUG_BEFORE_CMD:
+#Activar esta opción hace que el "trap DEBUG" se ejecute antes de cada comando.
+#Esto se asemeja al comportamiento de ksh 93.
+#¿Y qué es este "trap DEBUG"?
+#El "trap DEBUG" es una forma de interceptar eventos en zsh. Puedes definir una función especial llamada "DEBUG" que se ejecutará automáticamente cuando se active el "trap DEBUG".
+#Ejemplo:
+# Define una función DEBUG para mostrar el comando antes de ejecutarlo
+#function DEBUG {
+#  echo "Ejecutando el comando: $*"
+#}
+# Activa DEBUG_BEFORE_CMD
+#setopt DEBUG_BEFORE_CMD
+#ls -l
+#En este ejemplo, al ejecutar ls -l, verás:
+#Ejecutando el comando: ls -l
+#[Salida del comando ls -l]
+#Al ejecutar el "trap DEBUG" antes del comando, puedes obtener información sobre los comandos a ejecutarse e inspeccionar variables o tomar otras medidas antes de su ejecución.
+
+#setopt DOTGLOB # Cuando GLOB_DOTS está deshabilitado, el comodín * no coincidirá automáticamente con archivos que comienzan con un punto. Necesitarías especificar el punto explícitamente para incluir esos archivos
+
+#setopt DVORAK # Usa el teclado DVORAK para la corrección de errores.
+
+#setopt EMACS # si prefieres el modo de edición estilo Emacs en Zsh, puedes activar la opción EMACS. Sin embargo, se recomienda utilizar el comando bindkey para gestionar la configuración del modo de edición y asignar teclas específicas según tus preferencias. Por ejemplo, bindkey -e establece el modo Emacs y es más explícito y flexible.
+
+#setopt EQUALS # Con él activado,si tienes archivos en tu directorio como file1.txt, file2.txt, y file3.txt, puedes usar la expansión = de la siguiente manera:
+#"echo =file*.txt"
+#Esto se expandirá para coincidir con los archivos que cumplen con el patrón file*.txt y producirá la salida:
+#"file1.txt file2.txt file3.txt"
+
+#setopt ERREXIT # Cuando ERR_EXIT está habilitado (set), la shell ejecutará la trampa ZERR (si está configurada) y luego saldrá del programa si un comando produce un estado de salida no exitoso (distinto de cero).
+#La trampa ZERR es una función que puedes definir en tu script de Zsh para manejar errores específicos de manera personalizada.
+#Es importante tener en cuenta que esta opción se desactiva automáticamente mientras se ejecutan scripts de inicialización. Esto evita que la shell salga inmediatamente en caso de errores durante la carga de scripts de configuración.
+
+#setopt ERRRETURN # Cuando ERR_RETURN está habilitado (set), la shell realizará un retorno implícito de la función que contiene el comando que produce un estado de salida no exitoso. Esto significa que si un comando dentro de una función falla, la función se interrumpirá y el control se devolverá al punto de llamada.
+
+#setopt EVALLINENO # Cuando EVAL_LINENO está habilitado (set), los números de línea de las expresiones evaluadas con eval se rastrean de forma independiente del entorno circundante. Esto afecta tanto al parámetro LINENO como al número de línea producido por el escape %i en los prompts. Además, si esta opción está habilitada, el escape %N en los prompts mostrará la cadena '(eval)' en lugar del nombre del script o función, indicando que la línea pertenece a una evaluación mediante eval.
+
+#setopt EXEC # La opción EXEC en Zsh controla si los comandos se ejecutan o simplemente se leen y se verifican por errores de sintaxis sin ejecutarlos. 
+
+setopt EXTENDEDGLOB # Cuando EXTENDED_GLOB está habilitado, los caracteres #, ~, y ^ son tratados como parte de los patrones y pueden tener significados especiales en la generación de nombres de archivos, entre otras operaciones. A continuación, se describen brevemente los efectos de estos caracteres:
+#: Se utiliza para realizar coincidencias extendidas. Por ejemplo, *(#c2) coincidirá con archivos que tengan exactamente dos caracteres.
+#~: Cuando no está entre comillas y al principio de un patrón, se utiliza para la expansión de directorios nombrados. Por ejemplo, ~/Documentos se expandirá al directorio de documentos del usuario.
+#^: Se utiliza para excluir patrones. Por ejemplo, *(^*.txt) coincidirá con archivos que no tengan la extensión .txt.
+
+setopt EXTENDEDHISTORY #  habilita el registro de información adicional en el historial de comandos. En particular, guarda la marca de tiempo de inicio (en segundos desde la época) y la duración (en segundos) de cada comando ejecutado.
+
+#setopt FLOWCONTROL # Controla la habilitación o deshabilitación del control de flujo de salida mediante caracteres de inicio/parada (usualmente asignados a ^S/^Q) en el editor de la shell. Cuando FLOW_CONTROL está deshabilitado, se desactiva el control de flujo de salida en el editor de la shell.
+#El control de flujo de salida permite detener y reanudar la transmisión de datos en una terminal. Los caracteres de inicio y parada son comúnmente ^S (Control-S) para detener y ^Q (Control-Q) para reanudar.
+
+#setopt FORCEFLOAT # Cuando FORCE_FLOAT está habilitado (set), las constantes en las evaluaciones aritméticas se tratan como números de punto flotante incluso si no contienen un punto decimal.
+
+#setopt FUNCTIONARGZERO # Afecta el valor temporal de la variable $0 al ejecutar una función de la shell o al cargar un script. Al habilitar FUNCTION_ARGZERO, el valor de $0 se establece temporalmente con el nombre de la función o script.
+
+#setopt GLOB # Realiza la expansión de patrones de nombres de archivo durante la evaluación de comandos.
+
+#setopt GLOBALEXPORT # Cuando GLOBAL_EXPORT está activada (setopt GLOBAL_EXPORT), pasar la opción -x a los builtins mencionados también establecerá automáticamente la opción -g. Esto significa que las variables exportadas al entorno no se convertirán en locales para la función que las exporta, a menos que ya lo fueran o se use explícitamente la opción +g. Si GLOBAL_EXPORT está desactivada (unsetopt GLOBAL_EXPORT), las variables exportadas se comportarán como cualquier otra variable, es decir, se volverán locales en la función que las exporta. Puede afectar la portabilidad, y su comportamiento no se recomienda depender de manera crucial debido a la variabilidad en diferentes entornos. Además, la opción GLOBAL_EXPORT está activada por defecto para mantener la compatibilidad con versiones anteriores, pero su uso no se recomienda a menos que sea estrictamente necesario.
+
+#setopt GLOBALRCS # Si está activada (setopt GLOBAL_RCS), los archivos de inicio globales se ejecutarán al iniciar Zsh. Si está desactivada (unsetopt GLOBAL_RCS), estos archivos no se ejecutarán.
+
+#setopt GLOBASSIGN # Si está activada, la generación de nombres de archivo se realizará en el lado derecho de las asignaciones de parámetros escalares de la forma name=pattern (por ejemplo, foo=*). Si el resultado tiene más de una palabra, el parámetro se convertirá en un array con esas palabras como argumentos.
+
+setopt GLOBCOMPLETE # Cuando GLOB_COMPLETE está activada (setopt GLOB_COMPLETE), y la palabra actual tiene un patrón de glob, en lugar de insertar todas las palabras resultantes de la expansión del patrón, Zsh generará coincidencias como si estuviera completando y ciclará a través de ellas, similar a MENU_COMPLETE. Las coincidencias se generan como si se hubiera añadido un '*' al final de la palabra, o insertado en el cursor cuando COMPLETE_IN_WORD está establecido. Esta opción utiliza la coincidencia de patrones, no la expansión de glob, por lo que funciona no solo para archivos, sino también para cualquier tipo de completación, como opciones, nombres de usuario, etc. on GLOB_COMPLETE activada, cuando presionas Tab después de escribir file*, Zsh generará coincidencias como si estuvieras completando la palabra. En lugar de insertar automáticamente todas las coincidencias, ciclará a través de ellas, permitiéndote seleccionar la opción deseada.
+
+setopt GLOBDOTS # Cuando GLOB_DOTS está activada (setopt GLOB_DOTS), no se requiere que un punto (.) al inicio de un nombre de archivo se coincida explícitamente en un patrón de globbing. Por defecto, para coincidir con un nombre de archivo que comienza con un punto, es necesario incluir explícitamente el punto en el patrón. Con GLOB_DOTS activada, el patrón * coincidirá con todos los archivos, incluidos aquellos que comienzan con un punto. Sin esta opción activada, necesitarías usar un patrón explícito como .* para coincidir con los archivos ocultos.
+
+setopt GLOBSTARSHORT # Cuando GLOB_STAR_SHORT está activada (setopt GLOB_STAR_SHORT) y se utiliza la globbing de estilo zsh por defecto, los patrones **/* y ***/* pueden abreviarse a ** y ***, respectivamente. Esto significa que **.c buscará un archivo que termine en .c en cualquier subdirectorio, y ***.c hará lo mismo y además seguirá enlaces simbólicos. Si colocas una barra (/) inmediatamente después de ** o ***, se tratará el patrón como la forma no abreviada.
+
+setopt GLOBSUBST # Cuando GLOB_SUBST está activada (setopt GLOB_SUBST), los caracteres resultantes de la expansión de parámetros y la sustitución de comandos se consideran elegibles para la expansión de nombres de archivo y la generación de nombres de archivo. Sin embargo, las llaves (y las comas entre ellas) no se consideran elegibles para la expansión. Con GLOB_SUBST activada, los caracteres resultantes de la expansión de parámetros ($param_expansion) y la sustitución de comandos ($cmd_substitution) se consideran elegibles para la expansión de nombres de archivo. En este ejemplo, la expansión de parámetros y la sustitución de comandos actuarán como si los patrones de globbing fueran directamente escritos en la línea de comandos
+
+#setopt HASHALL # Es un alias de HASHCMDS
+
+setopt HASHCMDS # # Con HASH_CMDS activada, después de la primera ejecución del comando /ruta/larga/al/comando, Zsh guarda la ubicación y en las siguientes invocaciones, puedes simplemente llamar al comando por su nombre, y Zsh utilizará la ubicación guardada en lugar de realizar una búsqueda de ruta.
+
+setopt HASHDIRS # Lo mismo que HASHCMDS, pero guarda las rutas de acceso para poder lanzar otros comandos que haya en esa ruta
+
+setopt HASHEXECUTABLESONLY # Cuando HASH_EXECUTABLES_ONLY está activada (setopt HASH_EXECUTABLES_ONLY), se realizará una verificación adicional para asegurarse de que el archivo que se va a almacenar en caché como parte de HASH_CMDS es realmente un ejecutable. Esta opción está desactivada por defecto, ya que si la ruta contiene un gran número de comandos o consiste en muchos archivos remotos, las pruebas adicionales pueden llevar mucho tiempo. 
+
+setopt HASHLISTALL # Cuando HASH_LIST_ALL está activada (setopt HASH_LIST_ALL), se asegura de que toda la ruta del comando esté almacenada en caché (hashed) antes de intentar la finalización de comandos o corrección ortográfica. Esto hace que la primera finalización sea más lenta, pero evita informes falsos de errores tipográficos. Esta opción se utiliza para evitar informes incorrectos de errores tipográficos y garantizar que se utilice la caché completa durante las operaciones de finalización. (PROBANDO RENDIMIENTO)
+
+#setopt HISTALLOWCLOBBER # 
+
+#setopt HISTAPPEND # 
+
+#setopt HISTBEEP # 
+
+#setopt HISTEXPAND # 
+
+setopt HIST_EXPIRE_DUPS_FIRST # Expire a duplicate event first when trimming history.
+
+#setopt HISTFCNTLLOCK # 
+
+#setopt HISTFINDNODUPS # 
+
+#setopt HISTIGNOREALLDUPS # 
+
+#setopt HISTIGNOREDUPS # 
+
+#setopt HISTIGNORESPACE # 
+
+#setopt HISTLEXWORDS # 
+
+#setopt HISTNOFUNCTIONS # 
+
+#setopt HISTNOSTORE # 
+
+#setopt HISTREDUCEBLANKS # 
+
+#setopt HISTSAVEBYCOPY # 
+
+#setopt HISTSAVENODUPS # 
+
+#setopt HISTSUBSTPATTERN # 
+
+setopt HISTVERIFY # Do not execute immediately upon history expansion.
+
+#setopt HUP # 
+
+
+
+
+
+
+
+## ######## ##
+# Todavía no hemos llegado a estos:
+setopt INTERACTIVECOMMENTS # Si está desactivado, no permite usar el caracter # para comentar comandos en el prompt y da error. Por defecto viene activado:
+setopt NOTIFY # report the status of background jobs immediately:
+setopt PROMPTSUBST
+setopt SHAREHISTORY # Share history between all sessions.
+
+
+
+

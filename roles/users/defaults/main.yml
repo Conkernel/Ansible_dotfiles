@@ -1,0 +1,15 @@
+---
+# defaults file for users
+
+# Nombre del usuario a crear en el sistema
+#users_user_name: oloco2
+
+# Mete al usuario al grupo de sudoers adecuado en función de la distribución detectada
+users_sudo_group: "{{ 
+  'sudoers' if ansible_distribution == 'Ubuntu' else 
+  'sudo' if ansible_distribution == 'Debian' else 
+  'wheel' if ansible_distribution in ['CentOS', 'RedHat', 'Archlinux'] else 
+  'wheel'
+}}"
+
+...

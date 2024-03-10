@@ -1,0 +1,29 @@
+---
+
+- name: Actualizar lista de paquetes
+  ansible.builtin.package:
+    update_cache: yes
+  tags:
+    - update_packages
+
+- name: Actualiza el sistema # "pacman -Su"
+  ansible.builtin.package:
+    upgrade: true
+  tags:
+    - upgrade_system
+
+  # Since community.general 5.0.0 the 'changed' state of this call
+  # will be 'true' in case the cache was updated, or when a package
+  # was updated.
+  #
+  # The previous behavior was to only indicate whether something was
+  # upgraded. To keep the old behavior, add the following to the task:
+  #
+  #   register: result
+  #   changed_when: result.packages | length > 0
+
+
+# -y, --refresh
+# -u, --upgrades
+# -S, --sync (instala)
+...

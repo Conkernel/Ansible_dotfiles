@@ -1,0 +1,42 @@
+---
+
+- name: Instala el paquete zsh
+  ansible.builtin.package:
+    update_cache: yes
+    name: zsh
+    state: present
+
+
+- name: Configure ZDOTDIR en /etc/zsh/zshenv
+  ansible.builtin.lineinfile:
+    path: "{{ zsh_etc_zshenv }}"
+    line: 'ZDOTDIR=$HOME/.config/zsh/'
+    create: true
+    state: present
+    owner: root
+    group: root
+    mode: '0644'
+
+
+- name: Seteamos ZSH como terminal por defecto a nuevos usuarios
+  ansible.builtin.lineinfile:
+    path: "{{ zsh_default_shell_useradd_file }}"
+    line: "SHELL=/usr/bin/zsh"
+    regexp: "^SHELL="
+    backup: yes
+    state: present
+
+
+- name: Obtener la shell del usuario "root"
+  ansible.builtin.user:
+    name: "root"
+  register: user_info
+
+
+- name: Cambiar shell de root
+  ansible.builtin.user:
+    name: "root"
+    shell: "/bin/{{ zsh_root_shell }}"
+  when: not user_info.shell | regex_search('.*zsh$')
+
+...

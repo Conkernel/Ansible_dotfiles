@@ -1,0 +1,8 @@
+---
+
+- name: Instalar paquetería del sistema
+  ansible.builtin.package:
+    name: "{{ lookup('file', 'packages.txt').splitlines() }}"
+    state: present
+
+...

@@ -1,0 +1,39 @@
+---
+# tasks file for users
+
+# Creamos esta tarea para crear un grupo de emergencia. en caso de no ser detectado el grupo por defecto para sudoers
+
+- name: Comprobar si el grupo 'wheel' existe
+  ansible.builtin.group:
+    name: wheel
+  register: grupo_wheel
+
+
+- name: Crear el grupo 'wheel' si no existe
+  ansible.builtin.group:
+    name: wheel
+    state: present
+  when: grupo_wheel.state == 'absent'
+
+
+- name: Crear un usuario y meterlo al grupo wheel
+  ansible.builtin.user:
+    state: present
+    name: "{{ users_user_name }}"
+    create_home: true
+    comment: "Usuario {{ users_user_name }}"
+    append: true
+    groups: "{{ users_sudo_group }}"
+    shell: /bin/zsh
+    vault_password_file: "files/users_user_passwd-yml"
+
+- name: Agregar el usuario ansible
+  ansible.builtin.user:
+    state: present
+    name: ansible   
+    create_home: true
+    comment: ansible
+    shell: /bin/zsh
+
+
+...

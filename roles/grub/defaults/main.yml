@@ -1,0 +1,5 @@
+---
+GRUB_BOOT_CFG_FILE: "/boot/grub/grub.cfg"
+GRUB_ETC_CFG_FILE: "/etc/default/grub"
+GRUB_TIMEOUT: "2"
+GRUB_CMDLINE_LINUX_DEFAULT: "loglevel=7"
