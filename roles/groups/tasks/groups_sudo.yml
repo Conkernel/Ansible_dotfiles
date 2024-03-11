@@ -1,0 +1,12 @@
+---
+
+- name: Definir grupo para privilegios administrativos
+  set_fact:
+    groups_sudo_group: "{{ 
+      'sudoers' if ansible_distribution == 'Ubuntu' else 
+      'sudo' if ansible_distribution == 'Debian' else 
+      'wheel' if ansible_distribution in ['CentOS', 'RedHat', 'Archlinux'] else 
+      'wheel'
+    }}"
+
+...

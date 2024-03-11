@@ -1,9 +1,11 @@
 ---
 # tasks file for users
 
-# Creamos esta tarea para crear un grupo de emergencia. en caso de no ser detectado el grupo por defecto para sudoers
+- name: Llamamos al detector de distros
+  ansible.builtin.include_tasks: roles/groups/tasks/groups_sudo.yml
 
-- name: "Comprobar si el grupo {{ groups_sudo_group }} existe"
+
+- name: "Comprobar si el grupo {{ groups_sudo_group }} ya existe"
   ansible.builtin.group:
     name: "{{ groups_sudo_group }}"
   register: grupo_sudo

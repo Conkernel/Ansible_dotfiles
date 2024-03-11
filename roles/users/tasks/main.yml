@@ -1,6 +1,8 @@
 ---
 # tasks file for users
-
+- name: Llamamos al detector de distros en caso de no existir la variable groups_sudo_group
+  ansible.builtin.include_tasks: roles/groups/tasks/groups_sudo.yml
+  when: not groups_sudo_group is defined
 
 - name: "Crear usuario {{ users_user_name }} y meterlo al grupo {{ groups_sudo_group }}"
   ansible.builtin.user:
@@ -11,6 +13,7 @@
     append: true
     groups: "{{ groups_sudo_group }}"
     shell: /bin/zsh
+
 
 
 

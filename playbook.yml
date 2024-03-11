@@ -20,9 +20,9 @@
 #    - role: packages # Instala la paquetería
 #    - role: "grub" # Actualiza el valor de GRUB_TIMEOUT en /etc/default/grub.
 #      tags: ["grub"]
-#    - role: groups
+    - role: groups
 #      tags: [""]
-#    - role: users
+    - role: users
 #      tags: [""]
 #    - role: sudo
 #      tags: [""]
@@ -31,8 +31,8 @@
 
 
 
-  tasks:
-    - name: Incluir mi tarea personalizada
-      ansible.builtin.include_tasks: tests.yml
+#  tasks:
+#    - name: Incluir mi tarea personalizada
+#      ansible.builtin.include_tasks: tests.yml
 
 ...
