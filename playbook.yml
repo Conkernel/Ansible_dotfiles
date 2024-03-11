@@ -9,7 +9,9 @@
       default: oloco
 
   vars:
-    PYTHONDONTWRITEBYTECODE: True 
+    PYTHONDONTWRITEBYTECODE: False
+    # Es mejor usar un .gitignore con "**/__pycache__/"
+
   become: true
   roles:
 #    - role: "pre_tasks"
