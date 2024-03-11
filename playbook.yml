@@ -31,6 +31,6 @@
 
   tasks:
     - name: Incluir mi tarea personalizada
-      include_tasks: tests.yml
+      ansible.builtin.include_tasks: tests.yml
 
 ...
