@@ -1,0 +1,4 @@
+# mi_tarea.yml
+- name: string methods
+  ansible.builtin.debug:
+    msg: "{{ 'foo bar baz'.upper().split() }}"

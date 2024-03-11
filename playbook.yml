@@ -20,13 +20,17 @@
 #      tags: ["grub"]
 #    - role: groups
 #      tags: [""]
-    - role: users
+#    - role: users
 #      tags: [""]
 #    - role: sudo
 #      tags: [""]
 #    - role: zsh 
 #      tags: ["zsh"]
-- include: tests.yml
 
+
+
+  tasks:
+    - name: Incluir mi tarea personalizada
+      include_tasks: tests.yml
 
 ...
