@@ -1,12 +1,27 @@
 ---
 
-- name: Añade la clave ssh para oloco
+- name: Añade la clave ssh para {{ users_user_name }}
   ansible.posix.authorized_key:
     user: oloco
     state: present
-    key: "{{ lookup('file', '/home/charlie/.ssh/id_rsa.pub') }}"
+    key: "{{ lookup('file', '{{ users_user_name }}/.ssh/id_rsa.pub') }}"
     manage_dir: false
     validate_certs: false
 #    key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
+  ignore_errors: yes
+
+
+- name: "Habilitar login de root y uso de contraseña"
+  ansible.builtin.lineinfile:
+    dest: /etc/ssh/sshd_config
+    state: present
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+  with_items:
+    - regexp: "^PasswordAuthentication"
+      line: "PasswordAuthentication yes"
+    - regexp: "^PermitRootLogin"
+      line: "PermitRootLogin yes"
+  notify: restart ssh
 
 ...
