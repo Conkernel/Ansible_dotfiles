@@ -7,10 +7,7 @@
     regexp: "^GRUB_CMDLINE_LINUX_DEFAULT="
     backup: yes
     state: present
-#  notify: "Actualizar config de grub"
-  tags: grub
   register: RESULTADO_GRUB_CMDLINE_LINUX_DEFAULT
-
 
 
 - name: Cambiar el valor de GRUB_TIMEOUT a {{ GRUB_TIMEOUT }}
@@ -20,8 +17,6 @@
     regexp: "^GRUB_TIMEOUT="
     backup: yes
     state: present
-#  notify: "Actualizar config de grub"
-  tags: grub
   register: RESULTADO_GRUB_TIMEOUT
 
 
@@ -32,7 +27,5 @@
   when: RESULTADO_GRUB_CMDLINE_LINUX_DEFAULT.changed or RESULTADO_GRUB_TIMEOUT.changed
   changed_when: GRUB_MKCONFIG_OUTPUT.changed != 0 # <- Uses the return code to define when the task has changed.
   tags:
-    - grub
-
 
 ...
