@@ -22,9 +22,9 @@
 #      tags: ["grub"]
 #    - role: groups
 #      tags: [""]
-#    - role: users
+    - role: users
 #      tags: [""]
-#    - role: sudo
+    - role: sudo
 #      tags: [""]
 #    - role: zsh 
 #      tags: ["zsh"]
@@ -33,8 +33,8 @@
 
 
 
-  tasks:
-    - name: Incluir mi tarea personalizada
-      ansible.builtin.include_tasks: tests.yml
+#  tasks:
+#    - name: Incluir mi tarea personalizada
+#      ansible.builtin.include_tasks: tests.yml
 
 ...
