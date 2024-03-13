@@ -20,11 +20,25 @@
   register: RESULTADO_GRUB_TIMEOUT
 
 
+- name: Verificar si el archivo ya existe
+  stat:
+    path: /boot/grub/locale/es.mo
+  register: existing_file
+
+- name: Copiar archivo si no existe
+  copy:
+    src: /usr/share/locale/es/LC_MESSAGES/grub.mo
+    dest: /boot/grub/locale/es.mo
+  when: not existing_file.stat.exists
+  register: GRUB.ES_COPIADO
+
+
+
 # Sólo se ejecuta en caso de que RESULTADO_GRUB_CMDLINE_LINUX_DEFAULT o RESULTADO_GRUB_TIMEOUT hayan cambiado
 - name: Actualizar config de grub
   ansible.builtin.command: grub-mkconfig -o {{ GRUB_BOOT_CFG_FILE }}
   register: GRUB_MKCONFIG_OUTPUT # <- Registers the command output.
-  when: RESULTADO_GRUB_CMDLINE_LINUX_DEFAULT.changed or RESULTADO_GRUB_TIMEOUT.changed
+  when: RESULTADO_GRUB_CMDLINE_LINUX_DEFAULT.changed or RESULTADO_GRUB_TIMEOUT.changed or ES_COPIADO.changed
   changed_when: GRUB_MKCONFIG_OUTPUT.changed != 0 # <- Uses the return code to define when the task has changed.
   tags:
 
