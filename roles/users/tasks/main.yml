@@ -1,4 +1,9 @@
 ---
+
+
+
+
+
 # tasks file for users
 - name: Llamamos al detector de distros en caso de no existir la variable groups_sudo_group
   ansible.builtin.include_tasks: roles/groups/tasks/groups_sudo.yml
@@ -17,6 +22,11 @@
     append: true
     groups: "{{ groups_sudo_group }}"
     shell: /bin/zsh
+    password: "{{ password }}"
+     # 
+
+
+
 
 
 
