@@ -24,7 +24,7 @@
 #      tags: [""]
     - role: users
 #      tags: [""]
-    - role: sudo
+#    - role: sudo
 #      tags: [""]
 #    - role: zsh 
 #      tags: ["zsh"]
