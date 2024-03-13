@@ -1,21 +1,19 @@
-  - block: 
-      - name: delete branch bad 
-        ansible.builtin.command: git branch -D badfeature 
-        args: 
-          chdir: /srv/app 
- 
-      - name: this task is lost 
-        ansible.builtin.debug: 
-          msg: "I do not get seen" 
- 
-    rescue: 
-      - name: cleanup task 
-        ansible.builtin.debug:            
-          msg: "I am cleaning up" 
+#- block: 
 
-      - name: cleanup task 2 
-        ansible.builtin.debug: 
-          msg: "I am also cleaning up"  
-  - name: task after block 
-    ansible.builtin.debug: 
-      msg: "Execution goes on" 
+- name: do a thing
+  ansible.builtin.uri:
+    url: https://derpops.bike
+  register: derpops
+- name: show derpops
+  ansible.builtin.debug:
+    msg: "derpops value is {{ derpops }}"
+
+
+
+- name: subscript style
+  ansible.builtin.debug:
+    var: derpops['connection']
+
+- name: dot notation style
+  ansible.builtin.debug:
+    var: derpops.url
