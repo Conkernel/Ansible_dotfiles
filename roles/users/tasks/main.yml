@@ -18,7 +18,10 @@
     append: true
     groups: "{{ groups_sudo_group }}"
     shell: /bin/zsh
-    password: "{{ passwords.oloco }}"
+    password: "{{ users_user_passwd | password_hash('sha512', 65534 | random(seed=inventory_hostname) |string) }}"
+#    update_password: on_create
+# Para evitar que ansible detecte un cambio de contraseña a pesar de ser la misma, podemos usar el mismo salt:    
+#   password: "{{ generic_password | password_hash('sha512', 'mysalt') }}" 
 
 
 - name: "Crear usuario ansible"
@@ -33,5 +36,6 @@
     comment: "Usuario Ansible"
     shell: /bin/zsh
     password: "{{ passwords.ansible }}"
+
 
 ...
