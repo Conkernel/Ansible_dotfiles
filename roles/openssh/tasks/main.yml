@@ -2,7 +2,7 @@
 
 - name: Añade la clave ssh para {{ users_user_name }}
   ansible.posix.authorized_key:
-    user: oloco
+    user: "{{ users_user_name }}"
     state: present
     key: "{{ lookup('file', '{{ users_user_name }}/.ssh/id_rsa.pub') }}"
     manage_dir: false
