@@ -8,6 +8,11 @@
       private: false
       default: oloco
 
+    - name: users_user_passwd
+      prompt: ¿Contraseña?
+      private: true
+
+
   vars:
     PYTHONDONTWRITEBYTECODE: False
     # Es mejor usar un .gitignore con "**/__pycache__/"
@@ -26,7 +31,7 @@
 #      tags: [""]
 #    - role: sudo
 #      tags: [""]
-#    - role: zsh 
+#    - role: zsh
 #      tags: ["zsh"]
 #    - role: openssh
 #      tags: ["penssh"]
