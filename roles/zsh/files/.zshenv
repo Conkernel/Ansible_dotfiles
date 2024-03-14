@@ -5,6 +5,11 @@
 
 ###@ VARIABLES GLOBALES @##
 
+# evitar qie python cree los ficheros en ./__pycache__/ de cache para iniciar más rápido. Activar solo cuando sea necesario
+# export PYTHONDONTWRITEBYTECODE=False
+
+
+
 # Si .config no existe todavía, lo creamos:
 if [[ ! -d $HOME/.config ]]; then 
   mkdir "$HOME/.config"
@@ -68,5 +73,5 @@ export LC_TIME="es_ES.UTF-8"
 
 # Por defecto, $PATH siempre contendrá lo mismo que haya en $path, pero se define en un array, que es más cómod y poderoso. Por eso no necesitamos definir $PATH aquí, sólo $path:
 typeset -U path
-path=("/opt/microsoft/msedge/" "$path")
+path=(/opt/microsoft/msedge/ $path)
 

@@ -32,18 +32,12 @@ alias help=run-help
 autoload run-help-btrfs
 autoload run-help-git
 autoload run-help-ip
-autoload run-help-openssl
+autoload run-helpopenssl
 autoload run-help-p4
 autoload run-help-sudo
 autoload run-help-svk
 autoload run-help-svn
-autoload run-help-apt
-autoload run-help-man
-autoload run-help-ssh
-autoload run-help-tar
-autoload run-help-grep
-autoload run-help-find
-autoload run-help-p4
+
 # Escribimos el comando y pusalmos F1 para mostrar ayuda sobre ese comando, gracias a la ayuda de la función run-help:
 bindkey '^[OP' run-help
 ###############
@@ -62,9 +56,9 @@ done
 
 
 ### History ###
-HISTFILE="$ZDOTDIR/.zhistory" # Ruta del fichero de historial"
-HISTSIZE=1024 # Tamaño del fichero
-SAVEHIST=5000 # Número de comandos almacenados en el HISTFILE  
+export HISTFILE="$ZDOTDIR/.zhistory" # Ruta del fichero de historial"
+export HISTSIZE=1024 # Tamaño del fichero
+export SAVEHIST=5000 # Número de comandos almacenados en el HISTFILE
 ###############
 
 

@@ -1,0 +1,59 @@
+#
+# GIT
+alias gs='git status'
+
+# VARIOS
+alias cc='clear'
+alias nn='nvim'
+alias ll='lsd -lahF'
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias rm='rm -i'
+alias ls='ls --color=auto -lahF'
+alias ..='cd ..;pwd'
+alias ...='cd ../..;pwd'
+alias ....='cd ../../..;pwd'
+alias mkdir='mkdir -p -v'
+alias src="source ~/.config/zsh/.zshrc"
+alias dot="cd ~/proyectos/ansible/dotfiles"
+
+#Alias para colorear salida en terminal:
+alias diff='diff --color=auto'
+alias ip='ip -color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias tre='tree -C'
+
+
+alias cat='bat --paging=never -l log'
+
+# PACMAN
+alias pac='sudo pacman -S'		# instala
+alias pacs='sudo pacman -Ss'		# busca
+alias pacu='sudo pacman -Syu'           # update
+alias pacr='sudo pacman -R'             # remove package but not dependencies
+alias pacrr='sudo pacman -Rs'           # remove package with unused dependencies by other softwares
+
+
+# ATAJOS
+alias dot="cd ~/proyectos/ansible/dotfiles"
+alias conf='cd $HOME/.config'
+# Dirstack
+alias ccd='dirs -v'
+
+alias myip="curl http://ipecho.net/plain; echo $myip"
+
+# Calendario:
+alias ene='cal -m enero -3 --color=always'
+alias feb='cal -m febrero -3 --color=always'
+alias mar='cal -m marzo -3 --color=always'
+alias abr='cal -m abril -3 --color=always'
+alias may='cal -m mayo -3 --color=always'
+alias jun='cal -m junio -3 --color=always'
+alias jul='cal -m julio -3 --color=always'
+alias ago='cal -m agosto -3 --color=always'
+alias sep='cal -m septiembre -3 --color=always'
+alias oct='cal -m octubre -3 --color=always'
+alias nov='cal -m noviembre -3 --color=always'
+alias dic='cal -m diciembre -3 --color=always'

@@ -94,7 +94,7 @@ setopt CORRECT # Cuando CORRECT está habilitado, la shell zsh intenta corregir 
 
 #setopt CPRECEDENCES # Cuando C_PRECEDENCES está habilitado, la precedencia de los operadores aritméticos se ajusta para que sea más coherente con la precedencia utilizada en el lenguaje de programación C y otros lenguajes similares.
 
-#setopt CSHJUNKIEHISTORY # Pendiente de entender y revisar
+#setopt CSHJUNKIEHISTORY # hace que las referencias históricas sin especificador de evento sean más predecibles, ya que siempre se refieren a la tarea anterior. https://zsh.sourceforge.io/Doc/Release/Options.html#index-CSH_JUNKIE_HISTORY
 
 #setopt CSHJUNKIELOOPS # La opción CSH_JUNKIE_LOOPS en zsh te permite escribir bucles for y while con una sintaxis más simple, similar a la del shell CSH. En lugar de la estructura tradicional "do ... done", puedes usar simplemente "list; end".
 
@@ -185,44 +185,44 @@ setopt HASHEXECUTABLESONLY # Cuando HASH_EXECUTABLES_ONLY está activada (setopt
 
 setopt HASHLISTALL # Cuando HASH_LIST_ALL está activada (setopt HASH_LIST_ALL), se asegura de que toda la ruta del comando esté almacenada en caché (hashed) antes de intentar la finalización de comandos o corrección ortográfica. Esto hace que la primera finalización sea más lenta, pero evita informes falsos de errores tipográficos. Esta opción se utiliza para evitar informes incorrectos de errores tipográficos y garantizar que se utilice la caché completa durante las operaciones de finalización. (PROBANDO RENDIMIENTO)
 
-#setopt HISTALLOWCLOBBER # 
+setopt HISTALLOWCLOBBER # se utiliza para permitir que los redireccionamientos de salida con el símbolo | (tubería) sobrescriban archivos existentes, incluso si la opción CLOBBER está desactivada.
 
-#setopt HISTAPPEND # 
+setopt HISTAPPEND # determina si las nuevas entradas se agregan al final del historial existente (valor por defecto) o si se sobrescriben las entradas existentes.
 
-#setopt HISTBEEP # 
 
-#setopt HISTEXPAND # 
+setopt HISTBEEP # se utiliza para emitir un sonido de aviso (beep) cuando un widget en el entorno ZLE (Zsh Line Editor) intenta acceder a una entrada del historial que no existe.
 
-setopt HIST_EXPIRE_DUPS_FIRST # Expire a duplicate event first when trimming history.
+setopt HISTEXPAND # permite reemplazar elementos en la línea de comandos actual con entradas del historial de comandos. Esto puede ahorrar tiempo al escribir y ejecutar comandos repetidos. Permiste usar el !
 
-#setopt HISTFCNTLLOCK # 
+setopt HIST_EXPIRE_DUPS_FIRST # Cuando el historial se llena y necesita espacio para agregar un nuevo comando, esta opción prioriza la eliminación de las entradas duplicadas más antiguas.
 
-#setopt HISTFINDNODUPS # 
+#setopt HISTFCNTLLOCK # Puede ser particularmente beneficioso cuando el archivo de historial se almacena en un sistema de archivos distribuido como NFS, ya que puede ayudar a prevenir la corrupción de datos causada por el acceso simultáneo desde múltiples hosts.
 
-#setopt HISTIGNOREALLDUPS # 
+#setopt HISTFINDNODUPS # Activa el filtrado de duplicados durante la búsqueda del historial.
 
-#setopt HISTIGNOREDUPS # 
+#setopt HISTIGNOREALLDUPS # se utiliza para eliminar automáticamente las entradas duplicadas del historial de comandos, incluso si no son las más recientes.
 
-#setopt HISTIGNORESPACE # 
+#setopt HISTIGNOREDUPS # Se utiliza para evitar que las entradas duplicadas del comando anterior se agreguen al historial de comandos.
 
-#setopt HISTLEXWORDS # 
+#setopt HISTIGNORESPACE # Si el comando comienza con un espacio (en este caso, sí), no se agrega al historial.
 
-#setopt HISTNOFUNCTIONS # 
+setopt HISTLEXWORDS # Las palabras se dividen de manera similar a la línea de comandos normal de zsh, respetando las comillas simples y dobles. Esto proporciona una división más precisa de las palabras en el historial leído del archivo.
 
-#setopt HISTNOSTORE # 
+#setopt HISTNOFUNCTIONS # La definición de la función no se agrega al historial.
 
-#setopt HISTREDUCEBLANKS # 
+#setopt HISTNOSTORE # Solo se muestra el historial: Solo se te muestra el contenido del historial existente, sin incluir la ejecución del comando history en sí.
 
-#setopt HISTSAVEBYCOPY # 
+#setopt HISTREDUCEBLANKS # se utiliza para eliminar espacios en blanco superfluos de los comandos antes de agregarlos al historial de comandos.
 
-#setopt HISTSAVENODUPS # 
+setopt HISTSAVEBYCOPY #  Si el proceso de guardado se interrumpe (por ejemplo, por un corte de luz), el archivo de historial original no se modifica, evitando la pérdida de datos.
 
-#setopt HISTSUBSTPATTERN # 
+#setopt HISTSAVENODUPS # Se utiliza para evitar que se guarden entradas duplicadas en el archivo de historial de comandos.
 
-setopt HISTVERIFY # Do not execute immediately upon history expansion.
+setopt HISTSUBSTPATTERN # Esto implica usar patrones (como comodines o expresiones regulares) para hacer coincidir una gama más amplia de caracteres o cadenas en lugar de requerir una coincidencia exacta.Ejemplos: DESACTIVADO: ' history | grep "^cd " | sed 's/^cd /ls -l /' '   ACTIVADO: ' history | grep "^cd*" | s:^cd*::ls -l :  '
+
+setopt HISTVERIFY # Muestra el comando a ejecutar en la lína de comandos  antes de ejecutarlo.
 
 #setopt HUP # 
-
 
 
 
