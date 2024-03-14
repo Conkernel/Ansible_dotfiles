@@ -1,10 +1,6 @@
 ---
-
-
-
-
-
 # tasks file for users
+
 - name: Llamamos al detector de distros en caso de no existir la variable groups_sudo_group
   ansible.builtin.include_tasks: roles/groups/tasks/groups_sudo.yml
   when: not groups_sudo_group is defined
@@ -22,24 +18,20 @@
     append: true
     groups: "{{ groups_sudo_group }}"
     shell: /bin/zsh
-    password: "{{ password }}"
-     # 
+    password: "{{ passwords.oloco }}"
 
 
-
-
-
-
-
-
-# Revisar si realmente hace falta
-- name: Crear el usuario ansible
+- name: "Crear usuario ansible"
   ansible.builtin.user:
     state: present
-    name: ansible
+    name: "ansible"
+    generate_ssh_key: true
+    ssh_key_bits: 2048
+    ssh_key_file: ".ssh/id_rsa"
+    ssh_key_type: rsa
     create_home: true
-    comment: ansible
+    comment: "Usuario Ansible"
     shell: /bin/zsh
-
+    password: "{{ passwords.ansible }}"
 
 ...
