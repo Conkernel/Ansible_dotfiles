@@ -16,6 +16,7 @@ locate
 git 
 vim
 xorg-xlsfonts
+xorg-mkfontscale
 nano-syntax-highlighting 
 bat 
 curl 
