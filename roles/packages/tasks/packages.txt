@@ -39,9 +39,8 @@ networkmanager-openvpn
 nm-connection-editor
 xterm
 xorg-xclock
-lightdm
-lightdm-gtk-greeter
 xdg-utils
+gdm
 xdg-user-dirs
 e2fsprogs
 lvm2
