@@ -1,12 +1,5 @@
 ---
 
-- name: Instala el paquete zsh
-  ansible.builtin.package:
-    update_cache: yes
-    name: zsh
-    state: present
-
-
 - name: Configure ZDOTDIR en /etc/zsh/zshenv
   ansible.builtin.lineinfile:
     path: "{{ zsh_etc_zshenv }}"
