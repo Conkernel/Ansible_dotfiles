@@ -1,0 +1,8 @@
+---
+
+# curl
+curl_dest_path: "/etc/curl/"
+
+
+# register:
+git_dest_path: "$HOME/git/"
