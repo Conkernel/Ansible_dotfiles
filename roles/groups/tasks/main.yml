@@ -4,7 +4,6 @@
 - name: Llamamos al detector de distros
   ansible.builtin.include_tasks: roles/groups/tasks/groups_sudo.yml
 
-
 - name: "Comprobar si el grupo {{ groups_sudo_group }} ya existe"
   ansible.builtin.group:
     name: "{{ groups_sudo_group }}"
@@ -15,4 +14,3 @@
     name: "{{ groups_sudo_group }}"
     state: present
   when: grupo_sudo.state == "absent"
-
