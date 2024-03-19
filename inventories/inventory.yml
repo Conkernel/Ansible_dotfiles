@@ -1,0 +1,35 @@
+all:
+  vars:
+    var_all: valor_para_todos # una prueba que asigna este valor a todos los hosts gestionados con este inventory file
+
+linux: # grupo linux
+  hosts:
+    archible.casa.lan: # uno de los hosts del grupo linux
+      vars:
+        ansible_user: root
+        ansible_ssh_pass: oloco
+
+win:
+  hosts:
+    mami.casa.lan:
+      vars: #  vars que solo afectan al host mami.casa.lan
+        ansible_password: passwd
+        ansible_winrm_server_cert_validation: ignore
+        become_user: ansible
+        ansible_user: ansible
+        become_method: runas
+  vars: # vars globales para el grupo win, ya que todos en este grupo usarán winrm
+    ansible_connection: winrm
+    ansible_port: 5986
+
+
+local:
+  hosts:
+    localhost:
+  vars:
+    ansible_connection: local
+    ansible_user: oloco
+    ansible_password: passwd
+    become_user: root
+    become_method: sudo
+    become: true
