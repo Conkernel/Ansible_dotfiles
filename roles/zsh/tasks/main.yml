@@ -1,22 +1,16 @@
 ---
 
-- name: Obtener lista de archivos en la ruta /tmp/ansible/etc_files/zsh/
-  ansible.builtin.find:
-    paths: /tmp/ansible/etc_files/zsh/
-  register: archivos_encontrados
-
-- name: Copiar archivos encontrados al directorio /etc/zsh en el servidor remoto
+- name: "Copiar archivos de {{ zsh_src_dir }} al directorio {{ zsh_dest_dir }} en el servidor remoto"
   ansible.builtin.copy:
-    src: "{{ item.path }}"
-    dest: "/etc/zsh/{{ item.path | basename }}"
+    src: "{{ zsh_src_dir }}"
+    dest: "{{ zsh_dest_dir }}"
     backup: yes
     force: yes
-    mode: "0644"
     directory_mode: "0755"
+    mode: "0755"
     remote_src: yes
     group: root
     owner: root
-  with_items: "{{ archivos_encontrados.files }}"
 
 
 - name: Seteamos ZSH como terminal por defecto a nuevos usuarios
