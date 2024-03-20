@@ -1,9 +1,8 @@
 ---
 # roles/mi_rol/defaults/main.yml
-zsh_etc_zshenv: "/etc/zsh/"
 zsh_default_shell_useradd_file: "/etc/default/useradd"
 zsh_root_shell: "zsh"
-zsh_src_dir: /tmp/ansible/etc_files/zsh"
+zsh_src_dir: "/tmp/ansible/etc_files/zsh"
 zsh_dest_dir: "/etc/"
 
 ...
