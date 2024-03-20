@@ -1,14 +1,22 @@
 ---
 
-- name: Configure ZDOTDIR en /etc/zsh/zshenv
-  ansible.builtin.lineinfile:
-    path: "{{ zsh_etc_zshenv }}"
-    line: 'ZDOTDIR=$HOME/.config/zsh/'
-    create: true
-    state: present
-    owner: root
+- name: Obtener lista de archivos en la ruta /tmp/ansible/etc_files/zsh/
+  ansible.builtin.find:
+    paths: /tmp/ansible/etc_files/zsh/
+  register: archivos_encontrados
+
+- name: Copiar archivos encontrados al directorio /etc/zsh en el servidor remoto
+  ansible.builtin.copy:
+    src: "{{ item.path }}"
+    dest: "/etc/zsh/{{ item.path | basename }}"
+    backup: yes
+    force: yes
+    mode: "0644"
+    directory_mode: "0755"
+    remote_src: yes
     group: root
-    mode: '0644'
+    owner: root
+  with_items: "{{ archivos_encontrados.files }}"
 
 
 - name: Seteamos ZSH como terminal por defecto a nuevos usuarios
@@ -31,5 +39,3 @@
     name: "root"
     shell: "/bin/{{ zsh_root_shell }}"
   when: not user_info.shell | regex_search('.*zsh$')
-
-...
