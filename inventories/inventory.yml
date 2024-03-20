@@ -1,7 +1,5 @@
 all:
   vars:
-    var_all: valor_para_todos # una prueba que asigna este valor a todos los hosts gestionados con este inventory file
-
 
 linux:
   hosts:
@@ -19,9 +17,15 @@ win:
   hosts:
     mami.casa.lan:
       vars:
-        ansible_password: passwd
+        ansible_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          65376536333636313866323332353762313934363136656137653434643238393166326337363037
+          6264663432613266343632616135386264363962366631660a306536356230366335356564633361
+          35656462643938653238373032336563633538663663383163366664616361353535656539303633
+          3162323236393732350a613639336161663431303231643861373562346331333639363035396237
+          6234
         ansible_winrm_server_cert_validation: ignore
-        become_user: ansible
+        become_user: administrador
         ansible_user: ansible
         become_method: runas
   vars:
@@ -33,9 +37,15 @@ local:
   hosts:
     localhost:
   vars:
-#    ansible_connection: local
-#    ansible_user: test
-#    ansible_password: passwd
-#    become_user: root
-#    become_method: sudo
-#    become: true
+    ansible_connection: local
+    ansible_user: root
+    ansible_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          38336438323533303663613630663663363434323165316434386636373737353636343936383838
+          6364633464353234616230646439626539633839336564330a383030613962366332616661633565
+          39663836623433346265653236323730323264613966366133633065646638636465613365616632
+          3637663938323039360a643137396638333533356632613634313830376330663533396639346562
+          6532
+    become_user: root
+    become_method: sudo
+    become: true
