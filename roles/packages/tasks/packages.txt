@@ -1,16 +1,14 @@
 zsh
 curl
 git
-
-
 vim
+
 neovim
 tmux
 wget
 mosh
 gdm
 python
-
 ansible
 rsync
 locate
