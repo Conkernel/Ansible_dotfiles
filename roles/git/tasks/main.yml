@@ -1,2 +1,33 @@
 ---
 # tasks file for git
+- name: "Creamos directorio de destino {{ git_dest_path }} "
+  ansible.builtin.file:
+    follow: true
+    group: group
+    mode: "0755"
+    owner: user
+    path: /tmp/test
+    recurse: false
+    state: directory
+    unsafe_writes: false
+    filet
+
+
+- name: Creamos fichero de config de git en
+  ansible.builtin.template:
+    src: config.j2
+    dest: "{{ git_dest_path }}"
+    owner: apache
+    group: apache
+    mode: "0644"
+
+- name: Populate the Git credential store
+  ansible.builtin.template:
+    src: git_credentials.j2
+    dest: "{{ git_dest_path }}"
+    owner: appuser
+    group: appuser
+    mode: u=rw,g=,o=
+    no_log: true
+
+
