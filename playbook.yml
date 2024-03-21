@@ -31,10 +31,12 @@
 #      tags: [""]
 #    - role: sudo
 #      tags: [""]
-    - role: zsh
+#    - role: zsh
 #      tags: ["zsh"]
 #    - role: openssh
 #      tags: ["penssh"]
+#    - role: curl
+    - role: git
 
 
 #  tasks:
