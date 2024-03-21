@@ -1,0 +1,13 @@
+---
+
+- name: "Copiar archivos de {{ curl_src_dir }} al directorio {{ curl_dest_dir }} en el servidor remoto"
+  ansible.builtin.copy:
+    src: "{{ curl_src_dir }}"
+    dest: "{{ curl_dest_dir }}"
+    backup: yes
+    force: yes
+    directory_mode: "0755"
+    mode: "0755"
+    remote_src: yes
+    group: root
+    owner: root
