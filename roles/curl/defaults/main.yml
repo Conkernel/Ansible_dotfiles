@@ -1,0 +1,2 @@
+curl_src_dir: "/tmp/ansible/etc_files/curl"
+curl_dest_dir: "/etc/"
