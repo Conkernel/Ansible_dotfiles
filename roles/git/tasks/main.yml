@@ -1,33 +1,29 @@
 ---
 # tasks file for git
-- name: "Creamos directorio de destino {{ git_dest_path }} "
+- name: "Creamos directorio de destino {{ git_dest_folder }} "
   ansible.builtin.file:
     follow: true
-    group: group
+    group: "{{ users_user_name }}"
     mode: "0755"
-    owner: user
-    path: /tmp/test
+    owner: "{{ users_user_name }}"
+    path: "{{ git_dest_folder }}"
     recurse: false
     state: directory
     unsafe_writes: false
-    filet
 
-
-- name: Creamos fichero de config de git en
+- name: "Creamos fichero de config de git en {{ git_conf_file_dest_path }}"
   ansible.builtin.template:
-    src: config.j2
-    dest: "{{ git_dest_path }}"
-    owner: apache
-    group: apache
+    src: git_config.j2
+    dest: "{{ git_conf_file_dest_path }}"
+    owner: "{{ users_user_name }}"
+    group: "{{ users_user_name }}"
     mode: "0644"
 
-- name: Populate the Git credential store
-  ansible.builtin.template:
-    src: git_credentials.j2
-    dest: "{{ git_dest_path }}"
-    owner: appuser
-    group: appuser
-    mode: u=rw,g=,o=
-    no_log: true
-
-
+- name: "Crear ficheros de credenciales de git en {{ git_cred_file_dest_path }}"
+  ansible.builtin.copy:
+    content: "{{ git_token }}"
+    dest: "{{ git_cred_file_dest_path }}"
+    owner: "{{ users_user_name }}"
+    group: "{{ users_user_name }}"
+    mode: "0600"
+  no_log: true
