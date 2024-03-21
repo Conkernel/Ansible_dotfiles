@@ -1,5 +1,8 @@
+zsh
 curl
 git
+
+
 vim
 neovim
 tmux
@@ -7,7 +10,7 @@ wget
 mosh
 gdm
 python
-zsh
+
 ansible
 rsync
 locate
